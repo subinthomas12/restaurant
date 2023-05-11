@@ -1,0 +1,30 @@
+js api
+------
+
+ajax
+----
+
+1. xmlhttps
+2. fetch
+3. async await
+
+useEffect - hook used to call function at starting time of components
+
+
+Redierection in React
+--------------------
+
+react-router-dom - library used for redierection 
+
+
+Three components for routing:
+
+                            BrowserRouter - root component selector
+                            Route - for path setting
+                            Routes - if we use more than one path
+
+
+Params
+-----
+
+useParams - hook used to access params 
