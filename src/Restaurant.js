@@ -5,23 +5,38 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './Restaurant.css'
 import { Link } from 'react-router-dom';
+import { getRestuarants } from './actions/restAction';
+import { useDispatch, useSelector } from 'react-redux';
+
+
 
 
 function Restaurant() {
 
-    const [restList, setRest] = useState([])
 
     // api to access data 
-    const getData = async () => {
-        const result = await fetch('/restaurants.json')
-        result.json().then(data => setRest(data.restaurants))
-    }
+    // const getData = async () => {
+    //     const result = await fetch('/restaurants.json')
+    //     result.json().then(data => setRest(data.restaurants))
+    // }
+    // console.log(restList);
 
-    console.log(restList);
+
+
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        getData()
+
+        // getData()
+
+        dispatch(getRestuarants)
+
     }, [])
+
+
+    const { restList } = useSelector(state => state.reducer1)
+    console.log(restList);
+
 
     return (
 
@@ -37,7 +52,7 @@ function Restaurant() {
                                 <Card.Img variant="top" src={rest.photograph} />
                                 <Card.Body>
                                     <Card.Title>{rest.name}</Card.Title>
-                                    <Card.Text style={{color:'black'}}>
+                                    <Card.Text style={{ color: 'black' }}>
                                         {rest.address}
                                     </Card.Text>
                                 </Card.Body>

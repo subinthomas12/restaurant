@@ -5,33 +5,43 @@ import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Operatingtime from './Operatingtime';
 import Review from './Review';
+import { useSelector } from 'react-redux';
+
 
 
 
 function Restview() {
 
 
-    const [restList, setRest] = useState([])
+    // const [restList, setRest] = useState([])
 
     // api to access data 
-    const getData = async () => {
-        const result = await fetch('/restaurants.json')
-        result.json().then(data => setRest(data.restaurants))
-    }
+    // const getData = async () => {
+    //     const result = await fetch('/restaurants.json')
+    //     result.json().then(data => setRest(data.restaurants))
+    // }
 
 
     // object create for useParams
     const params = useParams()
     console.log(params.id);
 
+
+
+    const {restList}=useSelector(state=>state.reducer1)
+
+
+
     // find single restaurant data
     const singleRest = restList.find(i => i.id == params.id)
     console.log(singleRest);
 
+    
 
-    useEffect(() => {
-        getData()
-    }, [])
+
+    // useEffect(() => {
+    //     const { restList } = useSelector(state => state.reducer1)
+    // }, [])
 
 
 
